@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+<div class="nav">
+    <a href="{% url 'statements' %}"><p>Statements</p></a>
+    <a href="{% url 'admin:logout' %}"><img src="{% static 'img/exit.png' %}"></a>
+    <a href="{% url 'profile' %}"><img src="{% static 'img/profile.png' %}"></a>
+</div>
+<div class="neiw">
+<div class="st_block">
+    {% for s in st_list %}
+        <div class="st_obj">
+            <h2>№ {{s.id}}</h2>
+            <h2>Name: {{s.name}}</h2>
+            <h2>Status: {{s.status}}</h2>
+        </div>
+    {% endfor%}
+</div>
+<div class="cr_st">
+    <a href="{% url 'create' %}">Create Statement</a>
+</div>
+</div>
+
+{% endblock %}

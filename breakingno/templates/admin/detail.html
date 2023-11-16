@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+<div class="nav">
+    <a href="{% url 'statements' %}"><p>Admin</p></a>
+    <a href="{% url 'admin:logout' %}"><img src="{% static 'img/exit.png' %}"></a>
+</div>
+<div class="neiw">
+    <div class="st_detail">
+        <h1>№ {{st_obj.id}}</h1>
+        <div class="st_inf">
+            <p>{{st_obj.name}}</p>
+            <p>Name: {{st_obj.user.first_name}} {{st_obj.user.last_name}}</p>
+            <p>Registration Number: {{st_obj.car_num}}</p>
+        </div>
+        <p class="desc">{{st_obj.description}}</p>
+        {% if st_obj.status == 'Accepted' or st_obj.status == 'Decline' %}
+        {% else %}
+            <a href="{% url 'accept' operation='accept' pk=st_obj.pk %}"><button class="accept" type="button">Accept</button></a>
+            <a href="{% url 'accept' operation='decline' pk=st_obj.pk %}"><button class="decline" type="button">Decline</button></a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

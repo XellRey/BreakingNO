@@ -1,0 +1,47 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="nav">
+        <p>BreakingNO</p>
+    </div>
+    <div class="m_block">
+        <p>City portal of traffic violations</p>
+         <div class="traffic-light">
+            <div class="light green"></div>
+            <div class="light red"></div>
+        </div>
+        <div class="s">
+            <div class="signin">
+                <a href="{% url 'login' %}">SignIN</a>
+            </div>
+            <div class="img">
+                <img src="{% static 'img/light.png' %}">
+            </div>
+            <div class="signup">
+                <a href="{% url 'signup' %}">SignUP</a>
+            </div>
+        </div>
+
+    </div>
+
+
+  <script>
+    function toggleLights() {
+      var lights = document.querySelectorAll('.light');
+      lights.forEach(function(light) {
+        light.classList.remove('green', 'red');
+      });
+
+      var activeLight = lights[currentLightIndex];
+      activeLight.classList.add(lightColors[currentLightIndex]);
+      currentLightIndex = (currentLightIndex + 1) % lights.length;
+    }
+
+    var currentLightIndex = 0;
+    var lightColors = ['green', 'red'];
+
+    setInterval(toggleLights, 4000);
+  </script>
+{% endblock %}

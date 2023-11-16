@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+<div class="nav">
+    <a href="{% url 'statements' %}"><p>SignUP</p></a>
+</div>
+<div class="neiw">
+    <div class="signup_block">
+        <form method="post">
+            {% csrf_token %}
+            {{register_form}}
+            <button type="submit">SignUp</button>
+        </form>
+    </div>
+</form>
+
+</div>
+
+{% endblock %}

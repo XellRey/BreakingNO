@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+<div class="nav">
+    <a href="{% url 'statements' %}"><p>Profile</p></a>
+    <a href="{% url 'logout' %}"><img src="{% static 'img/exit.png' %}"></a>
+    <a href="{% url 'profile' %}"><img src="{% static 'img/profile.png' %}"></a>
+</div>
+<div class="neiw">
+    <div class="profile_block">
+        <div class="pr_ing">
+            <img src="{% static 'img/def_avatar.png' %}">
+            <p>{{user.first_name}}</p>
+            <p>{{user.last_name}}</p>
+        </div>
+        <div class="about">
+                <p>Registration Number: {{user.car_num}}</p>
+                <p>Adress: {{user.address}}</p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
